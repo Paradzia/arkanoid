@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,17 @@ public class GameManager : MonoBehaviour
 	public GameObject bricksPrefab;
 	public GameObject paddle;
 	private GameObject clonePaddle;
-	public static GameManager instance = null;
+    public GameObject randomBrick;
+    public static GameManager instance = null;
 
-	
-	void Start () {
+    public Vector3 spawnValues;
+    public int hazardCount;
+    public float spawnWait;
+    public float startWait;
+    public float waveWait;
+
+
+    void Start () {
 		if (instance == null)
 		{
 			instance = this;
@@ -22,13 +30,31 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		setup();
-	}
+        setup();
+        StartCoroutine(SpawnWaves());   
+    }
 
-	public void setup()
+        IEnumerator SpawnWaves()
+        {
+            yield return new WaitForSeconds(startWait);
+            while (true)
+            {
+                for (int i = 0; i < hazardCount; i++)
+                {
+                    Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+                    Quaternion spawnRotation = Quaternion.identity;
+                    Instantiate(randomBrick, spawnPosition, spawnRotation);
+                    yield return new WaitForSeconds(spawnWait);
+                }
+                yield return new WaitForSeconds(waveWait);
+            }
+        }
+    
+
+    public void setup()
 	{
 		clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
-		Instantiate(bricksPrefab, transform.position, Quaternion.identity);
+		//Instantiate(bricksPrefab, transform.position, Quaternion.identity);
 	}
 
 	public void destroyBrick()

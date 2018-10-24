@@ -6,9 +6,15 @@ public class Bricks : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("predupa");
         GameManager.instance.destroyBrick();
         Destroy(gameObject);
-        Debug.Log("dupa");
     }
+
+    private void Update()
+    {
+      if(GameManager.instance.bricks < 3) {
+            Instantiate(gameObject);
+            GameManager.instance.bricks++;
+        }   
+    }   
 }
