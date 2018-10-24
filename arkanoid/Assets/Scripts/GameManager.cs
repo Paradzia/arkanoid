@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float spawnWait;
     public float startWait;
     public float waveWait;
+    public float fallingSpeed;
 
 
     void Start () {
