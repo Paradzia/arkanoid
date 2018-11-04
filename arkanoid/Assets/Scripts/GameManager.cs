@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public float startWait;
     public float waveWait;
     public float fallingSpeed;
+    public List <GameObject> objectList;
 
 
     void Start () {
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnWaves());   
     }
 
+public static GameManager getInstance(){
+    return instance;
+}
         IEnumerator SpawnWaves()
         {
             yield return new WaitForSeconds(startWait);
@@ -43,7 +47,7 @@ public class GameManager : MonoBehaviour
                 {
                     Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                     Quaternion spawnRotation = Quaternion.identity;
-                    Instantiate(randomBrick, spawnPosition, spawnRotation);
+                    objectList.Add(Instantiate(randomBrick, spawnPosition, spawnRotation)); 
                     yield return new WaitForSeconds(spawnWait);
                 }
                 yield return new WaitForSeconds(waveWait);
@@ -51,8 +55,17 @@ public class GameManager : MonoBehaviour
         }
     
 
+    public void destroyObjects(){
+                
+        foreach(var obj in objectList){
+            Debug.Log(objectList.Count);
+            Destroy(obj);
+
+        }
+    }
     public void setup()
 	{
+        objectList = new List<GameObject>();
 		clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
 	}
 
