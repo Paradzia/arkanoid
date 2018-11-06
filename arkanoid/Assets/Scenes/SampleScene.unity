@@ -597,10 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1256d2405f429243b64099abe4b5578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bricksPrefab: {fileID: 1488506543095956, guid: 6c9a0f988cd035e46819d0dcf673570d,
-    type: 2}
   paddle: {fileID: 1881077693054298, guid: 5f833148f41e99e4ba65437396c6ed1d, type: 2}
-  randomBrick: {fileID: 1679463696807090, guid: 6f5a10c540741e940970fa6ca9f7c2fa,
+  randomBrick: {fileID: 1728989834818976, guid: 6f5a10c540741e940970fa6ca9f7c2fa,
     type: 2}
   deathParticles: {fileID: 1844900760819616, guid: 5abf6ef40ca473442b8f8da34b1f0de5,
     type: 2}
@@ -609,7 +607,8 @@ MonoBehaviour:
   spawnWait: 1
   startWait: 1
   waveWait: 1
-  fallingSpeed: 0.1
+  fallingSpeed: 0.01
+  score: 0
 --- !u!4 &1520026905
 Transform:
   m_ObjectHideFlags: 0

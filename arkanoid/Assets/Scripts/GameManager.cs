@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-	public GameObject bricksPrefab;
+	
 	public GameObject paddle;
 	private GameObject clonePaddle;
     public GameObject randomBrick;
@@ -21,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float startWait;
     public float waveWait;
     public float fallingSpeed;
+	public int score = 0;
 
 
     void Start () {
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < hazardCount; i++)
                 {
-                    Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+                    Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.6f, 3f), spawnValues.y, spawnValues.z);
                     Quaternion spawnRotation = Quaternion.identity;
                     Instantiate(randomBrick, spawnPosition, spawnRotation);
                     yield return new WaitForSeconds(spawnWait);
