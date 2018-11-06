@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
 	public GameObject paddle;
 	private GameObject clonePaddle;
     public GameObject randomBrick;
+	public GameObject deathParticles;
+	
     public static GameManager instance = null;
 
     public Vector3 spawnValues;
@@ -56,4 +59,17 @@ public class GameManager : MonoBehaviour
 		clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
 	}
 
+	public void die()
+	{
+		Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
+		Destroy(clonePaddle);
+		Invoke("SetupPaddle", 1f);
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(0);
+	}
+
+	void SetupPaddle()
+	{
+		clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
+	}
 }

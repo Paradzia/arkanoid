@@ -9,9 +9,12 @@ public class Ball : MonoBehaviour
 
 	private Rigidbody2D rb;
 	private bool ballInPlay;
-	
+	private Vector3 ballPosition;
+	private Vector3 playerPos = new Vector3(0f, -3.5f, 0);
+
 	void Awake()
 	{
+		transform.position = playerPos;
 		rb = GetComponent<Rigidbody2D>();
 	}
 	

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class RandomBrick : MonoBehaviour {
 
-    private int nextUpdate = 1;
-    private int nextSpeedUp = 20;
-    //public float fallingSpeed = 0.2f;
+    private int _nextUpdate = 1;    
     private void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(gameObject);    
@@ -14,17 +12,12 @@ public class RandomBrick : MonoBehaviour {
 
     private void Update()
     {       
-        if(Time.time >= nextUpdate)
+        if(Time.time >= _nextUpdate)
         {      
             Vector3 newPos = new Vector3(transform.position.x, transform.position.y - GameManager.instance.fallingSpeed, transform.position.z);
             transform.position = newPos;
-            nextUpdate = Mathf.FloorToInt(Time.time) + 1;           
+            _nextUpdate = Mathf.FloorToInt(Time.time) + 1;           
         } 
-        if(Time.time >= nextSpeedUp)
-        {
-            GameManager.instance.fallingSpeed += 0.01f;
-            nextSpeedUp = Mathf.FloorToInt(Time.time) + 10;
-        }
     }
 
 }
