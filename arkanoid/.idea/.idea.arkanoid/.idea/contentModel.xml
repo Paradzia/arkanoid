@@ -9,7 +9,6 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Ball.cs" t="Include" />
-          <e p="Bricks.cs" t="Include" />
           <e p="DeathPlan.cs" t="Include" />
           <e p="DestroyByTime.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />

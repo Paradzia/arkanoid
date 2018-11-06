@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomBrick : MonoBehaviour {
+public class RandomBrick : MonoBehaviour
+{
 
+    public GameObject brickParticle;
     private int _nextUpdate = 1;    
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Instantiate(brickParticle, transform.position, Quaternion.identity);
+        GameManager.instance.score++;
+        Debug.Log(GameManager.instance.score);
         Destroy(gameObject);    
     }
 
     private void Update()
     {       
-        if(Time.time >= _nextUpdate)
-        {      
             Vector3 newPos = new Vector3(transform.position.x, transform.position.y - GameManager.instance.fallingSpeed, transform.position.z);
             transform.position = newPos;
-            _nextUpdate = Mathf.FloorToInt(Time.time) + 1;           
-        } 
+            _nextUpdate = Mathf.FloorToInt(Time.time) + 1;               
     }
 
 }

@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-	public GameObject bricksPrefab;
+	
 	public GameObject paddle;
 	private GameObject clonePaddle;
     public GameObject randomBrick;
