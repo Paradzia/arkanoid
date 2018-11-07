@@ -9,9 +9,14 @@ public class DeathPlan : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other){
 		GameManager gameManager = GameManager.getInstance();
 		Destroy(other.gameObject);
-		AdUtils.showSkipableAd();
+		if(gameManager.lossCounter%5==0){
+			AdUtils.showSkipableAd();
+		}
+		
+		gameManager.objectGeneratorSwitch(); 
 		gameManager.destroyObjects();
-		gameManager.qwe();
-	
+		gameManager.destroyPaddle();
+		gameManager.createNewPaddle();
+		gameManager.objectGeneratorSwitch(); 
 	}
 }
