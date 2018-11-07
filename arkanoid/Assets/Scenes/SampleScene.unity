@@ -603,7 +603,7 @@ MonoBehaviour:
   randomBrick: {fileID: 1679463696807090, guid: 6f5a10c540741e940970fa6ca9f7c2fa,
     type: 2}
   spawnValues: {x: 2.4, y: 2, z: 0}
-  hazardCount: 200
+  hazardCount: 10
   spawnWait: 1
   startWait: 1
   waveWait: 1

@@ -11,7 +11,7 @@ public class DeathPlan : MonoBehaviour {
 		Destroy(other.gameObject);
 		AdUtils.showSkipableAd();
 		gameManager.destroyObjects();
-		
+		gameManager.qwe();
 	
 	}
 }
