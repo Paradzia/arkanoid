@@ -11,7 +11,6 @@ public class RandomBrick : MonoBehaviour
     {
         Instantiate(brickParticle, transform.position, Quaternion.identity);
         GameManager.instance.score++;
-        Debug.Log(GameManager.instance.score);
         Destroy(gameObject);    
     }
 

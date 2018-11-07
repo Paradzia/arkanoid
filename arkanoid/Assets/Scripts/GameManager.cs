@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     public int lossCounter=1;
+    public int score = 0;
 
     public Vector3 spawnValues;
     public int hazardCount;

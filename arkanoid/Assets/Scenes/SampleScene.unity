@@ -567,17 +567,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1408810249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20416e73af45a9947ae08b74c0e3ad0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1408810253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1408810249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdbf28154cf0b4899a48913b301209f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -613,15 +602,15 @@ MonoBehaviour:
     type: 2}
   deathParticles: {fileID: 1844900760819616, guid: 5abf6ef40ca473442b8f8da34b1f0de5,
     type: 2}
+  lossCounter: 1
+  score: 0
   spawnValues: {x: 2.4, y: 2, z: 0}
   hazardCount: 10
   spawnWait: 1
   startWait: 1
   waveWait: 1
-  fallingSpeed: 0.1
+  fallingSpeed: 0.03
   objectList: []
-  fallingSpeed: 0.01
-  score: 0
 --- !u!4 &1520026905
 Transform:
   m_ObjectHideFlags: 0
