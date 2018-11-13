@@ -6,7 +6,6 @@ using UnityEngine.Advertisements;
 public static class AdUtils  {
 
     public static void showSkipableAd(){
-
 		while(!Advertisement.IsReady()){
 			Debug.Log("waiting for ad");
 		}

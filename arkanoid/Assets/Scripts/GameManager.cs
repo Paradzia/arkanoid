@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
 	public GameObject deathParticles;
 	
     public static GameManager instance = null;
-
-    public int lossCounter=1;
     public int score = 0;
 
     public Vector3 spawnValues;
@@ -28,6 +26,7 @@ public class GameManager : MonoBehaviour
 
 
     void Start () {
+	    initPrefs();
 		if (instance == null)
 		{
 			instance = this;
@@ -57,29 +56,51 @@ public static GameManager getInstance(){
         }
     
 
-    public void destroyObjects(){     
-        lossCounter++; 
-        Debug.Log(lossCounter); 
-        foreach(var obj in objectList){  
-            Destroy(obj, 0.01f);
-        }
-    }
     public void setup()
 	{
         objectList = new List<GameObject>();
 		clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
 	}
 
-    public void createNewPaddle(){
-        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
-    }
+	private void initPrefs()
+	{
+		if (!PlayerPrefs.HasKey("lossCounter"))
+		{
+			PlayerPrefs.SetInt("losscounter", 1);
+		}
+		if (!PlayerPrefs.HasKey("highScore"))
+		{
+			PlayerPrefs.SetInt("highScore", 1);
+		}
+	}
 
-    public void destroyPaddle(){
+	private void incrementPlayerPref(string pref)
+	{
+		var value = PlayerPrefs.GetInt(pref);
+		value += 1;
+		PlayerPrefs.SetInt(pref, value);
+	}
+	
+    public void die()
+    {
+		incrementPlayerPref("lossCounter");
+	    Debug.Log(PlayerPrefs.GetInt("lossCounter"));
+	    if (PlayerPrefs.GetInt("lossCounter") % 5 == 0)
+	    {
+		    Debug.Log("add");
+//		    TODO: show add crashes unity editor
+//		    AdUtils.showSkipableAd();
+	    }
+        Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
         Destroy(clonePaddle);
+        Invoke("SetupPaddle", 1f);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
-    public void objectGeneratorSwitch(){
-        generateObjects = !generateObjects;
+    void SetupPaddle()
+    {
+        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
     }
 
 }

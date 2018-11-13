@@ -10,7 +10,7 @@ public class RandomBrick : MonoBehaviour
     {
         if (!other.gameObject.ToString().StartsWith("square"))
         {
-            DeathPlan.GameOver(other, out GameManager.instance);            
+            GameManager.instance.die();
         }
         Instantiate(brickParticle, transform.position, Quaternion.identity);
         GameManager.instance.score++;
@@ -20,7 +20,7 @@ public class RandomBrick : MonoBehaviour
     private void Update()
     {       
             Vector3 newPos = new Vector3(transform.position.x, transform.position.y - GameManager.instance.fallingSpeed, transform.position.z);
-            transform.position = newPos;               
+            transform.position = newPos;         
     }
 
 }
