@@ -93,8 +93,7 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("lossCounter") % 5 == 0)
         {
             Debug.Log("add");
-//		    TODO: show add crashes unity editor
-//		    AdUtils.showSkipableAd();
+		    AdUtils.showSkipableAd();
         }
 
         Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
