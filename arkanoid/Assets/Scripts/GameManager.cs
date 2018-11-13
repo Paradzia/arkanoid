@@ -6,91 +6,97 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	
-	public GameObject paddle;
-	private GameObject clonePaddle;
+    public GameObject paddle;
+    private GameObject clonePaddle;
     public GameObject randomBrick;
-	public GameObject deathParticles;
-	
+    public GameObject deathParticles;
+
     public static GameManager instance = null;
     public int score = 0;
 
     public Vector3 spawnValues;
-    public int hazardCount;
-    public float spawnWait;
     public float startWait;
     public float waveWait;
     public float fallingSpeed;
-    public List <GameObject> objectList;
+    public List<GameObject> objectList;
     private Boolean generateObjects = true;
 
 
-    void Start () {
-	    initPrefs();
-		if (instance == null)
-		{
-			instance = this;
-		}
-		else if (instance != this)
-		{
-			Destroy(gameObject);
-		}
+    void Start()
+    {
+        initPrefs();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
 
         setup();
-        StartCoroutine(SpawnWaves());   
+        StartCoroutine(SpawnWaves());
     }
 
-public static GameManager getInstance(){
-    return instance;
-}
-        IEnumerator SpawnWaves()
+    public static GameManager getInstance()
+    {
+        return instance;
+    }
+
+    IEnumerator SpawnWaves()
+    {
+        yield return new WaitForSeconds(startWait);
+        while (generateObjects)
         {
-            yield return new WaitForSeconds(startWait);
-            while (generateObjects)
-            {
-                Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.6f, 3f), spawnValues.y, spawnValues.z);
-                Quaternion spawnRotation = Quaternion.identity;
-                objectList.Add(Instantiate(randomBrick, spawnPosition, spawnRotation)); 
-                yield return new WaitForSeconds(waveWait);
-            }
+            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.6f, 3f), spawnValues.y, spawnValues.z);
+            Quaternion spawnRotation = Quaternion.identity;
+            objectList.Add(Instantiate(randomBrick, spawnPosition, spawnRotation));
+            yield return new WaitForSeconds(waveWait);
         }
-    
+    }
+
 
     public void setup()
-	{
+    {
         objectList = new List<GameObject>();
-		clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
-	}
+        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
+    }
 
-	private void initPrefs()
-	{
-		if (!PlayerPrefs.HasKey("lossCounter"))
-		{
-			PlayerPrefs.SetInt("losscounter", 1);
-		}
-		if (!PlayerPrefs.HasKey("highScore"))
-		{
-			PlayerPrefs.SetInt("highScore", 1);
-		}
-	}
+    private void initPrefs()
+    {
+        if (!PlayerPrefs.HasKey("lossCounter"))
+        {
+            PlayerPrefs.SetInt("lossCounter", 1);
+        }
 
-	private void incrementPlayerPref(string pref)
-	{
-		var value = PlayerPrefs.GetInt(pref);
-		value += 1;
-		PlayerPrefs.SetInt(pref, value);
-	}
-	
+        if (!PlayerPrefs.HasKey("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", 1);
+        }
+    }
+
+    private void incrementPlayerPref(string pref)
+    {
+        var value = PlayerPrefs.GetInt(pref);
+        value += 1;
+        PlayerPrefs.SetInt(pref, value);
+    }
+
     public void die()
     {
-		incrementPlayerPref("lossCounter");
-	    Debug.Log(PlayerPrefs.GetInt("lossCounter"));
-	    if (PlayerPrefs.GetInt("lossCounter") % 5 == 0)
-	    {
-		    Debug.Log("add");
+        incrementPlayerPref("lossCounter");
+        if (score > PlayerPrefs.GetInt("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", score);
+        }
+
+        if (PlayerPrefs.GetInt("lossCounter") % 5 == 0)
+        {
+            Debug.Log("add");
 //		    TODO: show add crashes unity editor
 //		    AdUtils.showSkipableAd();
-	    }
+        }
+
         Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
         Destroy(clonePaddle);
         Invoke("SetupPaddle", 1f);
@@ -102,5 +108,4 @@ public static GameManager getInstance(){
     {
         clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
     }
-
 }
