@@ -6,9 +6,12 @@ public class RandomBrick : MonoBehaviour
 {
 
     public GameObject brickParticle;
-    private int _nextUpdate = 1;    
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (!other.gameObject.ToString().StartsWith("square"))
+        {
+            DeathPlan.GameOver(other, out GameManager.instance);            
+        }
         Instantiate(brickParticle, transform.position, Quaternion.identity);
         GameManager.instance.score++;
         Destroy(gameObject);    
@@ -17,8 +20,7 @@ public class RandomBrick : MonoBehaviour
     private void Update()
     {       
             Vector3 newPos = new Vector3(transform.position.x, transform.position.y - GameManager.instance.fallingSpeed, transform.position.z);
-            transform.position = newPos;
-            _nextUpdate = Mathf.FloorToInt(Time.time) + 1;               
+            transform.position = newPos;               
     }
 
 }

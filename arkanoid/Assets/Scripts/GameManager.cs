@@ -49,7 +49,7 @@ public static GameManager getInstance(){
             yield return new WaitForSeconds(startWait);
             while (generateObjects)
             {
-                Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+                Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.6f, 3f), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
                 objectList.Add(Instantiate(randomBrick, spawnPosition, spawnRotation)); 
                 yield return new WaitForSeconds(waveWait);
