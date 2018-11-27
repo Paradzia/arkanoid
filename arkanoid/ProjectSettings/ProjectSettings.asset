@@ -393,7 +393,6 @@ PlayerSettings:
   switchAllowsVideoCapturing: 1
   switchAllowsRuntimeAddOnContentInstall: 0
   switchDataLossConfirmation: 0
-  switchUserAccountLockEnabled: 0
   switchSupportedNpadStyles: 3
   switchNativeFsCacheSize: 32
   switchIsHoldTypeHorizontal: 0
@@ -623,9 +622,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: d016ece8-97e0-4f62-9e3b-70d8115538d9
-  projectName: arkanoid
-  organizationId: paradzia
+  cloudProjectId: ed94e553-cea8-4734-985e-45f8ac18c28e
+  projectName: arkanoid (1)
+  organizationId: deksorganization
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

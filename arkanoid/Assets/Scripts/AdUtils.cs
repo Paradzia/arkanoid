@@ -9,7 +9,8 @@ public static class AdUtils  {
 		while(!Advertisement.IsReady()){
 			Debug.Log("waiting for ad");
 		}
-		Advertisement.Show("video");
+		var options = new ShowOptions { resultCallback = HandleShowResult };
+		Advertisement.Show("video", options);
 		Debug.Log("ad showed");
 	}
 	public static void showAd(){
@@ -17,7 +18,27 @@ public static class AdUtils  {
 		while(!Advertisement.IsReady()){
 			Debug.Log("waiting for ad");
 		}
-		Advertisement.Show("rewardedVideo");
+		var options = new ShowOptions { resultCallback = HandleShowResult };
+		Advertisement.Show("rewardedVideo", options);
 		Debug.Log("ad showed");
+	}
+
+	 private static void HandleShowResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                Debug.Log("The ad was successfully shown.");
+                //TODO
+                break;
+            case ShowResult.Skipped:
+                Debug.Log("The ad was skipped before reaching the end.");
+				//TODO
+                break;
+            case ShowResult.Failed:
+                Debug.LogError("The ad failed to be shown.");
+				//TODO
+                break;
+        }
 	}
 }

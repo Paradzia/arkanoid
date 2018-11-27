@@ -679,8 +679,6 @@ MonoBehaviour:
     type: 2}
   score: 0
   spawnValues: {x: 2.4, y: 2, z: 0}
-  hazardCount: 10
-  spawnWait: 1
   startWait: 1
   waveWait: 1
   fallingSpeed: 0.03
