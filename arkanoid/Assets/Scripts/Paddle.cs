@@ -11,11 +11,14 @@ public class Paddle : MonoBehaviour
 	
 	void Update ()
 	{
-		float xPos = transform.position.x + Input.GetAxis("Horizontal") * paddleSpeed;
+//		float xPos = transform.position.x + Input.GetAxis("Horizontal") * paddleSpeed;
 //		TODO: test on device if this thingy works. 
-//		float xPos = transform.position.x + Input.GetTouch(0).position.x * paddleSpeed;
-//		Debug.Log(xPos + "  " + xxPos);
+		float xPos = transform.position.x + Input.GetTouch(0).position.x * paddleSpeed;
+		xPos = xPos/100-2;
+		Debug.Log(xPos + "  " + xPos);
 		playerPos = new Vector3(Mathf.Clamp(xPos, -1.47f, 1.43f), -4.5f, 0f);
 		transform.position = playerPos;
 	}
+
+	
 }

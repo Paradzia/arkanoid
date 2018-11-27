@@ -108,5 +108,5 @@ public class GameManager : MonoBehaviour
         clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
     }
 
-    
+
 }
