@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     private GameObject clonePaddle;
     public GameObject randomBrick;
     public GameObject deathParticles;
+    public ScoreText scoreT;
 
     public static GameManager instance = null;
     public int score = 0;
@@ -20,7 +22,6 @@ public class GameManager : MonoBehaviour
     public float fallingSpeed;
     public List<GameObject> objectList;
     private Boolean generateObjects = true;
-
 
     void Start()
     {
@@ -33,7 +34,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        
+        
         setup();
         StartCoroutine(SpawnWaves());
     }
@@ -108,5 +110,12 @@ public class GameManager : MonoBehaviour
         clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
     }
 
+    public void Update(){
+        Debug.Log("PUNKTY"+ score.ToString());
+        
+
+    }
+
+   
 
 }

@@ -29,11 +29,11 @@ public static class AdUtils  {
         {
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
-                //TODO
+                //TODO	nagrodzenie gracza w jakiś sposób
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");
-				//TODO
+				//TODO pokazanie menu i gra od nowa 
                 break;
             case ShowResult.Failed:
                 Debug.LogError("The ad failed to be shown.");

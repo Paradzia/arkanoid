@@ -11,7 +11,7 @@ public class Paddle : MonoBehaviour
 	
 	void Update ()
 	{
-//		float xPos = transform.position.x + Input.GetAxis("Horizontal") * paddleSpeed;
+		//		float xPos = transform.position.x + Input.GetAxis("Horizontal") * paddleSpeed;
 //		TODO: test on device if this thingy works. 
 		float xPos = transform.position.x + Input.GetTouch(0).position.x * paddleSpeed;
 		xPos = xPos/100-2;
