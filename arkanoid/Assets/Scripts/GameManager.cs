@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("lossCounter") % 5 == 0)
         {
-            Debug.Log("add");
 		    AdUtils.showSkipableAd();
         }
 
@@ -109,13 +108,5 @@ public class GameManager : MonoBehaviour
     {
         clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
     }
-
-    public void Update(){
-        Debug.Log("PUNKTY"+ score.ToString());
-        
-
-    }
-
-   
 
 }
