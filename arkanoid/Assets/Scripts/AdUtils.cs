@@ -21,6 +21,7 @@ public static class AdUtils  {
 		var options = new ShowOptions { resultCallback = HandleShowResult };
 		Advertisement.Show("rewardedVideo", options);
 		Debug.Log("ad showed");
+        GameManager.instance.incrementPlayerPref("premiumCoins");
 	}
 
 	 private static void HandleShowResult(ShowResult result)

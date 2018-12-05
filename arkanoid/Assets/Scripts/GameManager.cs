@@ -75,9 +75,16 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("highScore", 1);
         }
+
+        if (!PlayerPrefs.HasKey("premiumCoins"))
+        {
+            PlayerPrefs.SetInt("premiumCoins", 1);
+        }
+
+        
     }
 
-    private void incrementPlayerPref(string pref)
+    public void incrementPlayerPref(string pref)
     {
         var value = PlayerPrefs.GetInt(pref);
         value += 1;

@@ -16,11 +16,18 @@ public class Paddle : MonoBehaviour
 
     void Update ()
 	{
-        if(Input.touchCount > 0) {            
+        if(Input.touchCount > 0) {
+           // float xTouchPos = transform.position.x + Input.GetAxis("Horizontal") * paddleSpeed;
             float xTouchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).x;
             playerPos = new Vector3(Mathf.Clamp(xTouchPos, -1.47f, 1.43f), -4.5f, 0f);	
 		    transform.position = playerPos;
         }   
+        
+    }
+
+    private void upgradePaddle()
+    {
+        transform.localScale = new Vector3(transform.localScale.x + 0.5f, transform.localScale.y, transform.localScale.z);
     }
 
 
