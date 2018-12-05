@@ -25,7 +25,7 @@ public class Paddle : MonoBehaviour
         
     }
 
-    private void upgradePaddle()
+    public void upgradePaddle()
     {
         transform.localScale = new Vector3(transform.localScale.x + 0.5f, transform.localScale.y, transform.localScale.z);
     }

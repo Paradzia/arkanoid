@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        
+
+        PlayerPrefs.SetInt("premiumCoins", 50);
+
         setup();
         StartCoroutine(SpawnWaves());
     }

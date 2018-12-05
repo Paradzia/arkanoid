@@ -14,6 +14,27 @@ public class MainMenu : MonoBehaviour {
 		Application.Quit();
 	}
 
+    public void ExtendPaddle()
+    {
+        int oldValue = PlayerPrefs.GetInt("premiumCoins");
+
+        if (oldValue >= 5)
+        {
+            PlayerPrefs.SetInt("premiumCoins", oldValue - 5);
+        }
+        GameManager.instance.paddle.transform.localScale = new Vector3(1.5f, 1, 1);
+    }
+    public void NarrowPaddle()
+    {
+        int oldValue = PlayerPrefs.GetInt("premiumCoins");
+
+        if (oldValue >= 5)
+        {
+            PlayerPrefs.SetInt("premiumCoins", oldValue - 5);
+        }
+        GameManager.instance.paddle.transform.localScale = new Vector3(0.5f, 1, 1);
+    }
+
 	
 }
 
